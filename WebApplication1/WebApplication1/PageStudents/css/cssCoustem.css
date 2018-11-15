@@ -1,0 +1,32 @@
+
+ @import "Amiri.css";
+
+.dropdown-container{
+	font-family:'Amiri', serif;
+	 padding: 6px 15px 6px 16px;
+    display: none;
+     font-size: 17px;
+
+}
+.dropdown-btn {
+	font-family:'Amiri', serif;
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 25px;
+    display: block;
+    border: none;
+    background: none;
+    text-align: right;
+    cursor: pointer;
+    outline: none;
+}
+.bar {
+	display: none;
+}
+.out{
+	font-family:'Amiri', serif;
+
+}
+a:active{
+color:blue;
+}

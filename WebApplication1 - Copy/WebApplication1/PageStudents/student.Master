@@ -1,0 +1,195 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="student.master.cs" Inherits="WebApplication1.student" %>
+
+
+<html >
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>الرئيسية</title>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
+
+    <!-- Toastr style -->
+    <link href="css/plugins/toastr/toastr.min.css" rel="stylesheet">
+
+    <link href="css/animate.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+
+
+
+</head>
+
+<body >
+
+    <div id="wrapper">
+
+        <nav class="navbar-default navbar-static-side" role="navigation">
+            <div class="sidebar-collapse">
+                <ul class="nav metismenu" id="side-menu">
+                    <li class="nav-header">
+                        <div class="dropdown profile-element">
+                             <span>
+                                <img alt="image" class="img-circle" src="img/logo.png" width="160 px" />
+                            </span>
+                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                                <span class="clear">
+                                    <span class="block m-t-xs">
+                                        <strong class="font-bold">     </strong>
+                                
+                                </span>
+                            </a>
+                            <ul class="dropdown-menu animated fadeInRight m-t-xs">
+                               
+                               
+                              
+                                <li class="divider"></li>
+                                <li><a href="../Logout.aspx">تسجيل الخروج</a></li>
+                            </ul>
+                        </div>
+                        <div class="logo-element">
+                           القائمة
+                        </div>
+                    </li>
+                  
+
+                    <li>
+                        <a href="#"><i class="fa fa-eyedropper"></i> <span class="nav-label">التوقيع  </span></a>
+                        <ul class="nav nav-second-level collapse">
+                            <li><a href="AddSign.aspx"> انشاء توقيع</a></li>
+                            
+
+                        </ul>
+                    </li>
+                  
+                   <li class="active">
+                        <a href="#"><i class="fa fa-envelope"></i> <span class="nav-label"> تقديم طلب  </span></a>
+                        <ul class="nav nav-second-level collapse">
+                            <li><a href="#">  سحب مساق </a></li>
+                            <li><a href="#"> سحب فصل دراسي</a></li>
+                            <li><a href="Absenceexcuse.aspx"> عذر غياب عن الامتحان النهائي</a></li>
+                             <li><a href="#"> عرض حال</a></li>
+                            <li><a href="#">  تأجيل فصل</a></li>
+                            <li><a href="#">   تسجيل مساق بديل للتخرج</a></li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="#"><i class="fa fa-paste"></i> <span class="nav-label"> الطلبات التي تم تقديمها   </span></a>
+                        <ul class="nav nav-second-level collapse">
+                      <li><a href="#">  سحب مساق </a></li>
+                            <li><a href="#"> سحب فصل دراسي</a></li>
+                            <li><a href="#"> عذر غياب عن الامتحان النهائي</a></li>
+                             <li><a href="#"> عرض حال</a></li>
+                            <li><a href="#">  تأجيل فصل</a></li>
+                            <li><a href="#">   تسجيل مساق بديل للتخرج</a></li>
+
+                        </ul>
+                    </li>
+
+
+
+                  
+                </ul>
+
+            </div>
+        </nav>
+
+          <div id="page-wrapper" class="gray-bg">
+            <div class="row border-bottom">
+                <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
+                    <div class="navbar-header">
+                        <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>
+                      
+                    </div>
+                    <ul class="nav navbar-top-links navbar-right">
+                        <li>
+                            <span class="m-r-sm text-muted welcome-message"></span>
+                        </li>
+                      <li class="dropdown">
+                    <a class="dropdown-toggle count-info" data-toggle="dropdown" href="">
+                        <img src="img/user.png" width="30 px">
+                    </a>
+                    <ul class="dropdown-menu dropdown-alerts">
+                         
+                    </ul>
+                </li>
+                        <li>
+                            <a href="../Logout.aspx">
+                                <i class="fa fa-sign-out"></i>تسجيل الخروج
+                            </a>
+                        </li>
+                    </ul>
+
+                </nav>
+            </div>
+        <form id="frm1" runat ="server">
+              <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        
+        </asp:ContentPlaceHolder>
+            </form>
+            
+
+        </div>
+    </div>
+
+
+
+    <!-- Mainly scripts -->
+    <script src="js/jquery-2.1.1.js"></script>
+    <script src="js/jquery-ui-1.10.4.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
+    <script src="js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+    <!-- Custom and plugin javascript -->
+    <script src="js/inspinia.js"></script>
+    <script src="js/plugins/pace/pace.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+
+            $("#todo, #inprogress, #completed").sortable({
+                connectWith: ".connectList",
+                update: function (event, ui) {
+
+                    var todo = $("#todo").sortable("toArray");
+                    var inprogress = $("#inprogress").sortable("toArray");
+                    var completed = $("#completed").sortable("toArray");
+                    $('.output').html("ToDo: " + window.JSON.stringify(todo) + "<br/>" + "In Progress: " + window.JSON.stringify(inprogress) + "<br/>" + "Completed: " + window.JSON.stringify(completed));
+                }
+            }).disableSelection();
+
+        });
+    </script>
+        <script>
+            $(document).ready(function () {
+
+                $('.footable').footable();
+
+                $('#date_added').datepicker({
+                    todayBtn: "linked",
+                    keyboardNavigation: false,
+                    forceParse: false,
+                    calendarWeeks: true,
+                    autoclose: true
+                });
+
+                $('#date_modified').datepicker({
+                    todayBtn: "linked",
+                    keyboardNavigation: false,
+                    forceParse: false,
+                    calendarWeeks: true,
+                    autoclose: true
+                });
+
+            });
+
+    </script>
+</body>
+
+</html>

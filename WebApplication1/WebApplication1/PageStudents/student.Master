@@ -1,0 +1,197 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="student.master.cs" Inherits="WebApplication1.student" %>
+
+<!DOCTYPE html>
+<html>
+<head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>الصفحة الرئيسية</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="css/w3.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="css/w3pro.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <link rel="stylesheet" href="css/cssCoustem.css">
+    
+</head>
+<body class="w3-light-grey">
+        
+    
+    <div id="slidebar">
+      
+         <div class="w3-sidebar  w3-bar-block w3-collapse" style="width:250px;right:0" id="mySidebar">
+
+                <ul class="nav nav-pills flex-column ml-auto   "> 
+                        <span>
+                                <img alt="image" class="img-circle rounded mx-auto d-block w3-margin w3-padding-16" src="img/logo.png" width="160 px" />
+                        </span>
+                        <li>
+                            <a href="#" class="dropdown-btn active "><i class="fa fa-home"></i> <span class="nav-label w3-margin-right">الصفحة الرئيسية  </span></a>
+                        </li>
+
+                        <li>
+                                <a href="#" onclick=dwl2(); class="dropdown-btn nav-label w3-margin-right  "><i class="fa fa-caret-down"></i>التوقيع
+                                
+                                </a>
+                                      <ul id="dropdown-container3" class="dropdown-container nav nav-second-level collapse">
+                                        <li><a href="AddSign.aspx">انشاء توقيع</a></li>
+                                        <li><a href="#">تجديد توقيع</a></li>
+                                      </ul>
+                        </li>
+                    
+                       <li  >
+                            <a href="#" onclick=dwl(); class="dropdown-btn"><i class="fa fa-caret-down"></i> <span class="nav-label w3-margin-right  "> تقديم طلب  </span></a>
+                            <ul  id="dropdown-container2" class=" dropdown-container nav nav-second-level collapse ">
+                                <li><a href="PullCourse.aspx">  سحب مساق </a></li>
+                                <li><a href="Dropsemester.aspx"> سحب فصل دراسي</a></li>
+                                <li><a href="Absenceexcuse.aspx"> عذر غياب عن الامتحان النهائي</a></li>
+                                 <li><a href="ShowStates.aspx"> عرض حال</a></li>
+                                <li><a href="DelaySemester.aspx">  تأجيل فصل</a></li>
+                                <li><a href="AltSubject.aspx">   تسجيل مساق بديل للتخرج</a></li>
+                            </ul>
+                       </li>
+                       <li  >
+                            <a href="#" onclick=dwl3(); class="dropdown-btn"><i class="fa fa-caret-down"></i> <span class="nav-label w3-margin-right  ">طلباتي</span></a>
+                            <ul  id="dropdown-container4" class=" dropdown-container nav nav-second-level collapse">
+                                <li><a href="PullCourseDisplay.aspx">  سحب مساق </a></li>
+                                <li><a href="Dropsemester.aspx"> سحب فصل دراسي</a></li>
+                                <li><a href="Absenceexcuse.aspx"> عذر غياب عن الامتحان النهائي</a></li>
+                                 <li><a href="ShowStates.aspx"> عرض حال</a></li>
+                                <li><a href="#">  تأجيل فصل</a></li>
+                                <li><a href="AltSubject.aspx">   تسجيل مساق بديل للتخرج</a></li>
+                            </ul>
+                       </li>
+                      </ul>   
+            
+                 
+         </div>
+    </div>
+
+    <div  class="w3-main" style="margin-right:200px;  width:initial;">
+<div class="w3-blue" >
+     <button id="open2" class="w3-button w3-xlarge w3-right w3-hide-large"  onclick="w3_close()" style="display:none;" >&#9776;</button>
+  <button id="open" class="w3-button  w3-xlarge w3-right w3-hide-large" onclick="w3_open()"  >&#9776;</button>
+    <div class="w3-container w3-responsive">
+        <ul class="nav navbar-links navbar-right ">
+                    <li class="w3-margin">
+                            <a class=" out w3-text-white w3-margin-top "href="../Logout.aspx">
+                                <i class="  fa fa-sign-out w3-margin-top"></i>تسجيل الخروج
+                            </a>
+                     </li>
+               
+              <li class="dropdown ">
+                  <a class="count-info" >
+                      <img src="img/user.png" width="70px">
+                  </a>
+               </li>
+                
+            </ul>
+    </div>
+  
+</div>
+ <form id="frm1" runat ="server">
+              <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        
+        </asp:ContentPlaceHolder>
+    </form>
+</div>
+    
+         
+        
+   
+   
+    <script>
+            /* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
+            var dropdown = document.getElementsByClassName("dropdown-btn");
+            var i;
+     
+            for (i = 0; i < dropdown.length; i++) {
+                
+              dropdown[i].addEventListener("click", function() {
+                this.classList.toggle("active");
+                var dropdownContent = this.nextElementSibling;
+                if (dropdownContent.style.display === "block") {
+                  dropdownContent.style.display = "none";
+                } else {
+                  dropdownContent.style.display = "block";
+                }
+              });
+            }
+           
+    </script>
+    <script>
+            /* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
+          
+       
+            var dropdown = document.getElementsByClassName("dropdown-btn1");
+            var i;
+            for (i = 0; i < dropdown.length; i++) {
+              dropdown[i].addEventListener("click", function() {
+                this.classList.toggle("active");
+                var dropdownContent = this.nextElementSibling;
+                if (dropdownContent.style.display === "block") {
+                  dropdownContent.style.display = "none";
+                } else {
+                  dropdownContent.style.display = "block";
+                }
+              });
+            }
+    </script>
+    <script>
+       function dwl() {
+        var dropdown = document.getElementById("dropdown-container3")
+            dropdown.style.display="none";
+            var dropdown2 = document.getElementById("dropdown-container4")
+            dropdown2.style.display="none";
+       }
+       function dwl2() {
+        var dropdown = document.getElementById("dropdown-container2")
+            dropdown.style.display="none";
+        var dropdown2 = document.getElementById("dropdown-container4")
+           dropdown2.style.display="none";      
+            
+       }
+       function dwl3() {
+        var dropdown = document.getElementById("dropdown-container2")
+            dropdown.style.display="none";
+        var dropdown2 = document.getElementById("dropdown-container3")
+            dropdown2.style.display="none";      
+            
+       }
+
+        function w3_close() {
+          var close = document.getElementById("open2");
+        var open = document.getElementById("open");
+            if (document.getElementById("mySidebar").style.display = "block") {
+
+                document.getElementById("mySidebar").style.display = "none";
+            open.style.display = "block";
+          close.style.display = "none";
+            }
+              
+
+}
+      
+        
+        function w3_open() {
+        var close = document.getElementById("open2");
+        var open = document.getElementById("open");
+             
+
+            if (document.getElementById("mySidebar").style.display = "none") {
+                document.getElementById("mySidebar").style.display = "block";
+                close.style.marginRight = "250px";
+                open.style.display = "none";
+               close.style.display = "block";
+
+            }
+           
+
+          
+        }
+      
+
+    </script>
+</body>
+</html>
